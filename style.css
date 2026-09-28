@@ -1,3 +1,7 @@
 body {
     background-color: var(--page-background);
 }
+
+header {
+    background-color: var(--surface-background);
+}
