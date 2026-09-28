@@ -1,38 +1,33 @@
-# Project Name
+# Pokédex
 
-A short description of the project, its purpose, and the main focus of the implementation.
+Pokédex is an exam project created as part of the **Frontend Web Developer Bootcamp at Developer Akademie**.
+
+The project focuses on fetching, processing, and displaying data from an external API while building an interactive and responsive web application with JavaScript.
 
 ## Features
 
-- Feature 1
-- Feature 2
-- Feature 3
-- Feature 4
+- **Pokémon Overview** – Browse Pokémon displayed as individual cards with their name, type, and image
+- **Pokémon Details** – Open a detailed view with additional information and stats for each Pokémon
+- **Pokémon Navigation** – Navigate between Pokémon directly within the detailed view
+- **Search Bar** – Search for specific Pokémon by name
+- **Load More** – Load additional Pokémon without reloading the page
+- **Loading Feedback** – Display visual feedback while new data is being fetched
 
 ## Technologies
 
 - HTML
 - CSS
 - JavaScript
+- PokéAPI
 
 ## What I Learned
 
-This project is currently in development. The key learnings and technical experience gained during the project will be documented here once the implementation is complete.
+During this project, I gained practical experience working with an external API and handling asynchronous data in JavaScript.
 
-<!--
-WHAT I LEARNED:
+I learned how to fetch and process API data efficiently, implement a **fetch-then-render** workflow, and use **caching** to avoid unnecessary API requests. I also practiced **lazy loading** by requesting additional data only when it is actually needed.
 
-Update this section during or after development.
-Focus on what you actually learned or improved while working on the project.
-
-Example:
-
-## What I Learned
-
-During this project, I improved my understanding of working with JavaScript objects and JSON data. I also gained more experience with DOM manipulation, event handling, and storing application data using Local Storage.
-
-Try to describe the most relevant learnings in 2–4 sentences instead of simply repeating the technologies or features listed above.
--->
+The project also helped me improve my understanding of dynamic DOM manipulation, asynchronous application flows, user feedback during loading states, and managing data-driven user interfaces.
+application state
 
 ## Project Status
 
@@ -40,32 +35,12 @@ Try to describe the most relevant learnings in 2–4 sentences instead of simply
 
 The project is currently being developed.
 
-<!--
-PROJECT STATUS:
-
-Update only the "Current Status" and the short description above whenever the project progresses.
-
-Examples:
-
-> **Current Status:** In Development
-
-The project is currently being developed.
-
-> **Current Status:** Submitted for Review
-
-Development is complete and the project has been submitted for evaluation.
-
-> **Current Status:** Completed
-
-The project has been completed successfully.
--->
-
 ## Local Development
 
 Clone the repository:
 
 ```bash
-git clone https://github.com/PatrickWagnerDev/REPOSITORY-NAME.git
+git clone https://github.com/PatrickWagnerDev/Pokedex.git
 ```
 
 Open the project in **Visual Studio Code** and start `index.html` using the **Live Server** extension.
