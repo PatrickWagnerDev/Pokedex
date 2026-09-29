@@ -24,3 +24,12 @@ header {
     border: 1px solid black;
     border-radius: 8px;
 }
+
+.main-section {
+    position: relative;
+}
+
+.pokedex-frame {
+    padding: var(--content-limitation);
+    width: 100%;
+}
