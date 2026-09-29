@@ -11,4 +11,8 @@ html {
 
 a {
     text-decoration: none;
+    color: var(--text-light);
+    &:hover {
+        scale: 1.1;
+    }
 }
