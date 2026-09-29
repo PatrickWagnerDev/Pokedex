@@ -53,6 +53,8 @@ body {
 .poketable-wrapper {
     left: 6.2%;
     width: 37.2%;
+    scrollbar-width: thin;
+    scrollbar-color: #ee1515 transparent;
     background-color: blue;
 }
 
@@ -60,6 +62,17 @@ body {
     left: 56.5%;
     width: 37.7%;
     background-color: rgb(95, 226, 34);
+}
+
+.pokemon-card {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 4px;
+    margin: 4px;
+    border-radius: 8px;
+    height: 48px;
+    background-color: red;
 }
 
 .site-footer {
