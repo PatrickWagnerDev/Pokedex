@@ -22,4 +22,6 @@
     --type-dark: #705746;
     --type-steel: #b7b7ce;
     --type-fairy: #d685ad;
+
+    --content-limitation: 20px max(calc((100% - 1440px)/2), clamp(16px, 10vw, 140px));
 }

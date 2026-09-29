@@ -5,3 +5,22 @@ body {
 header {
     background-color: var(--surface-background);
 }
+
+.site-header {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 32px;
+    padding: var(--content-limitation);
+}
+
+.site-header img {
+    width: clamp(280px, 90%, 500px);
+}
+
+.site-header input {
+    width: 280px;
+    border: 1px solid black;
+    border-radius: 8px;
+}
