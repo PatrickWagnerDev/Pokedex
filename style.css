@@ -26,13 +26,40 @@ body {
 }
 
 .main-section {
-    position: relative;
     flex: 1;
+    padding: var(--content-limitation);
+}
+
+.pokedex {
+    position: relative;
 }
 
 .pokedex-frame {
-    padding: var(--content-limitation);
+    display: block;
     width: 100%;
+    position: relative;
+    z-index: 1;
+    pointer-events: none;
+}
+
+.poketable-wrapper,
+.pokedata-wrapper {
+    position: absolute;
+    top: 24.2%;
+    height: 38.5%;
+    overflow-y: auto;
+}
+
+.poketable-wrapper {
+    left: 6.2%;
+    width: 37.2%;
+    background-color: blue;
+}
+
+.pokedata-wrapper {
+    left: 56.5%;
+    width: 37.7%;
+    background-color: rgb(95, 226, 34);
 }
 
 .site-footer {
