@@ -1,9 +1,8 @@
 body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100dvh;
     background-color: var(--page-background);
-}
-
-header {
-    background-color: var(--surface-background);
 }
 
 .site-header {
@@ -13,6 +12,7 @@ header {
     align-items: center;
     gap: 32px;
     padding: var(--content-limitation);
+    background-color: var(--surface-background);
 }
 
 .site-header img {
@@ -27,9 +27,20 @@ header {
 
 .main-section {
     position: relative;
+    flex: 1;
 }
 
 .pokedex-frame {
     padding: var(--content-limitation);
     width: 100%;
+}
+
+.site-footer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 32px;
+    padding: var(--content-limitation);
+    background-color: var(--surface-background);
 }
