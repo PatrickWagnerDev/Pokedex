@@ -10,7 +10,7 @@ body {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    gap: 32px;
+    gap: 16px;
     padding: var(--content-limitation);
     background-color: var(--surface-background);
     box-shadow: 0 8px 6px -6px rgba(0, 0, 0, 0.666);
@@ -76,6 +76,12 @@ body {
     height: 48px;
     background-color: gray;
     box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.666);
+}
+
+.card {
+    display: flex;
+    align-items: center;
+    gap: 8px;
 }
 
 .site-footer {
