@@ -14,7 +14,7 @@
     <link rel="stylesheet" href="./style.css">
 </head>
 
-<body>
+<body onload="init()">
     <header class="site-header">
         <img src="assets/image/Pokedex_Logo.png" alt="Pokedex Logo">
         <input type="text" alt="Searchbar for Pokemon" placeholder="Please enter Pokemon name...">
@@ -22,8 +22,8 @@
     <main class="main-section">
         <div class="pokedex">
             <img class="pokedex-frame" src="assets/image/Pokedex_Rahmen.png" alt="Pokedex Frame">
-            <section class="poketable-wrapper">
-                <article class="pokemon-card" id="pokemon-card">
+            <section class="poketable-wrapper" id="pokemon-card">
+                <article class="pokemon-card">
                     <div class="card">
                         <p>
                             #1
