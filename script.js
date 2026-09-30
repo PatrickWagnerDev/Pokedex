@@ -7,23 +7,27 @@ function renderPokecard(p) {
     console.log(p);
     
 
-    for (let i = 19; i < p.results.length; i++) {
+    for (let i = 0; i < p.results.length; i++) {
         pokemonContainer.innerHTML += /*html*/`
             <article class="pokemon-card" id="pokemon-card">
                     <div class="card">
                         <p>
-                            #${p.results[i]+1}
+                            #${i+1}
                         </p>
                         <p>
-                            ${p.results[i].name}
+                            ${capitalizeName(p.results[i].name)}
                         </p>
                     </div>
                     <div class="card">
                         <button>leaf</button>
                         <button>poison</button>
                     </div>
-                    <button>Bild</button>
+                    <img src="" alt="">
                 </article>
         `        
     }
+}
+
+function capitalizeName(i) {
+    return i.charAt(0).toUpperCase() + i.slice(1);
 }
