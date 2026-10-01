@@ -81,6 +81,11 @@ body {
     background: linear-gradient(to bottom right, var(--first-type-color) 43%, var(--second-type-color) 57%);
     box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.666);
     font-size: 1.2rem;
+    cursor: pointer;
+    &:hover {
+        scale: 1.02;
+        filter: brightness(1.15);
+    }
 }
 
 .pokemon-card-info,
@@ -127,6 +132,7 @@ body {
     cursor: pointer;
 
     &:hover {
+        scale: 1.02;
         filter: brightness(1.2);
     }
 
