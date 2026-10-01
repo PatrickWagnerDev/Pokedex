@@ -4,3 +4,10 @@ async function getData(P) {
     let currentResponse = await response.json();
     renderPokecard(currentResponse);
 }
+
+async function getType(T) {
+    let apiURL = `https://pokeapi.co/api/v2/type/${T}`
+    let response = await fetch(apiURL);
+    let currentResponse = await response.json();
+    return currentResponse.sprites['generation-viii']['sword-shield'].symbol_icon;
+}
