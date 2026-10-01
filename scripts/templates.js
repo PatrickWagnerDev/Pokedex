@@ -23,6 +23,8 @@ function templateTypeIcon(icon, typeName) {
 
 function templatePokedata() {
     return /*html*/`
-        
+        <article>
+            
+        </article>
     `;
 }
