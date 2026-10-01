@@ -57,8 +57,8 @@ body {
     left: 6.2%;
     width: 37.2%;
     scrollbar-width: thin;
-    scrollbar-color: #ee1515 transparent;
-    background-color: var(--text-light);
+    scrollbar-color: #f7c0c0 transparent;
+    background-color: rgb(14, 85, 11);
 }
 
 .pokedata-wrapper {
@@ -70,37 +70,102 @@ body {
 .pokemon-card {
     display: flex;
     align-items: center;
-    justify-content: space-between;
     flex-shrink: 0;
     padding: 4px;
-    margin: 4px;
+    margin: 8px 4px;
     border: 4px ridge green;
     border-radius: 8px;
-    height: 48px;
-    background-color: gray;
+    height: 70px;
+    --first-type-color: gray;
+    --second-type-color: gray;
+    background: linear-gradient(to bottom right, var(--first-type-color) 43%, var(--second-type-color) 57%);
     box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.666);
+    font-size: 1.2rem;
 }
 
-.card {
+.pokemon-card-info,
+.pokemon-sprite-wrapper {
+    flex: 1;
+    min-width: 0;
+    display: flex;
+    align-items: center;
+}
+
+.pokemon-card-info {
+    gap: 8px;
+}
+
+.pokemon-sprite-wrapper {
+    justify-content: flex-end;
+    align-self: stretch;
+}
+
+.pokemon-id {
+    min-width: 3ch;
+}
+
+.pokemon-types {
     display: flex;
     align-items: center;
     gap: 8px;
 }
 
+.type-icon {
+    height: 32px;
+    border: 2px solid white;
+    border-radius: 50%;
+}
+
+.pokemon-sprite {
+    height: 70px
+}
+
 .load-more-button {
     justify-content: center;
     font: inherit;
+    font-size: 1.5rem;
     cursor: pointer;
+
     &:hover {
-        filter: brightness(1.15);
+        filter: brightness(1.2);
     }
+
     &.d-none {
         display: none;
     }
 }
 
-.d-none {
-    display: none;
+.loading-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 10;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.666);
+
+    &.d-none {
+        display: none;
+    }
+}
+
+.loading-spinner {
+    width: 200px;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+.no-scroll {
+    overflow: hidden;
 }
 
 .site-footer {

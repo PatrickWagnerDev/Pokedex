@@ -1,24 +1,22 @@
-function templatePokecard(p, typeIcons) {
+function templatePokecard(p, typeIcons, cardColors) {
     return /*html*/`
-        <article class="pokemon-card">
-            <div class="card">
-                <p>
-                    #${p.id}
-                </p>
-                <p>
-                    ${capitalizeName(p.name)}
-                </p>
+        <article class="pokemon-card" style="${cardColors}">
+            <div class="pokemon-card-info">
+                <p class="pokemon-id">#${p.id}</p>
+                <p>${capitalizeName(p.name)}</p>
             </div>
-            <div class="card">
+            <div class="pokemon-types">
                 ${typeIcons}
             </div>
-            <img src="${p.sprites.front_default}" alt="${capitalizeName(p.name)} sprite">
+            <div class="pokemon-sprite-wrapper">
+                <img class="pokemon-sprite" src="${p.sprites.front_default}" alt="${capitalizeName(p.name)} sprite">
+            </div>
         </article>
     `;
 }
 
 function templateTypeIcon(icon, typeName) {
     return /*html*/`
-        <img src="${icon}" alt="${typeName}">
+        <img src="${icon}" class="type-icon" alt="${typeName}">
     `;
 }

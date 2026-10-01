@@ -4,24 +4,24 @@
     --text-light: #f8fafc;
     --text-dark: #172033;
 
-    --type-normal: #a8a77a;
-    --type-fire: #ee8130;
-    --type-water: #6390f0;
-    --type-electric: #f7d02c;
-    --type-grass: #7ac74c;
-    --type-ice: #96d9d6;
-    --type-fighting: #c22e28;
-    --type-poison: #a33ea1;
-    --type-ground: #e2bf65;
-    --type-flying: #a98ff3;
-    --type-psychic: #f95587;
-    --type-bug: #a6b91a;
-    --type-rock: #b6a136;
-    --type-ghost: #735797;
-    --type-dragon: #6f35fc;
-    --type-dark: #705746;
-    --type-steel: #b7b7ce;
-    --type-fairy: #d685ad;
+    --type-normal: #9099a1;
+    --type-fire: #ff9c54;
+    --type-water: #4d90d5;
+    --type-electric: #f3d23b;
+    --type-grass: #63bb5b;
+    --type-ice: #74cec0;
+    --type-fighting: #ce4069;
+    --type-poison: #ab6ac8;
+    --type-ground: #d97746;
+    --type-flying: #8fa8dd;
+    --type-psychic: #f97176;
+    --type-bug: #90c12c;
+    --type-rock: #c7b78b;
+    --type-ghost: #5269ac;
+    --type-dragon: #0a6dc4;
+    --type-dark: #5a5366;
+    --type-steel: #5a8ea1;
+    --type-fairy: #ec8fe6;
 
     --content-limitation: 20px max(calc((100% - 1440px)/2), clamp(16px, 10vw, 64px));
 }
