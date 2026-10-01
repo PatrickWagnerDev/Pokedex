@@ -16,12 +16,7 @@ async function loadPokemon() {
     LOAD_MORE_BUTTON.classList.add('d-none');
     showLoadingScreen();
     try {
-        const START_ID = loadedPokemon + 1;
-        const END_ID = Math.min(loadedPokemon + LOAD_AMOUNT, totalPokemon);
-        for (let pokemonId = START_ID; pokemonId <= END_ID; pokemonId++) {
-            await getData(pokemonId);
-        }
-        loadedPokemon = END_ID;
+        await loadNextPokemon();
     } catch (error) {
         console.error('Fehler beim Laden der Pokemon:', error);
     }
@@ -31,6 +26,14 @@ async function loadPokemon() {
     }
 }
 
+async function loadNextPokemon() {
+    const START_ID = loadedPokemon + 1;
+    const END_ID = Math.min(loadedPokemon + LOAD_AMOUNT, totalPokemon);
+    for (let pokemonId = START_ID; pokemonId <= END_ID; pokemonId++) {
+        await getData(pokemonId);
+    }
+    loadedPokemon = END_ID;
+}
 async function renderPokecard(p) {
     const POKEMON_LIST = document.getElementById('pokemon-list');
     const TYPE_ICONS = await renderTypeIcons(p.types);
