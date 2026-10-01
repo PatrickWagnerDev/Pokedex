@@ -1,10 +1,13 @@
 let loadedPokemon = 0;
+let currentPokemonId = 0;
+let totalPokemon = 0;
 const LOAD_AMOUNT = 40;
 const POKEMON_DATA = [];
 const MAX_STAT_VALUE = 255;
 const STAT_LABELS = ['HP', 'ATK', 'DEF', 'SpATK', 'SpDEF', 'SPE'];
 
-function init() {
+async function init() {
+    totalPokemon = await getPokemonCount();
     loadPokemon();
 }
 
@@ -12,16 +15,18 @@ async function loadPokemon() {
     const LOAD_MORE_BUTTON = document.getElementById('load-more-button');
     LOAD_MORE_BUTTON.classList.add('d-none');
     showLoadingScreen();
-
     try {
         const START_ID = loadedPokemon + 1;
-        const END_ID = loadedPokemon + LOAD_AMOUNT;
+        const END_ID = Math.min(loadedPokemon + LOAD_AMOUNT, totalPokemon);
         for (let pokemonId = START_ID; pokemonId <= END_ID; pokemonId++) {
             await getData(pokemonId);
         }
         loadedPokemon = END_ID;
-    } finally {
-        hideLoadingScreen();
+    } catch (error) {
+        console.error('Fehler beim Laden der Pokemon:', error);
+    }
+    hideLoadingScreen();
+    if (loadedPokemon < totalPokemon) {
         LOAD_MORE_BUTTON.classList.remove('d-none');
     }
 }
@@ -60,6 +65,31 @@ function showPokemonDetails(ID) {
     const BACKGROUND_CLASS = `${MY_POKEMON.types[0].type.name}-bg`;
     const POKEDATA_STATS = renderPokedataStats(MY_POKEMON, BACKGROUND_CLASS);
     POKEDATA_CONTAINER.innerHTML = templatePokedata(MY_POKEMON, POKEDATA_IMAGE, POKEDATA_TYPES, POKEDATA_STATS, BACKGROUND_CLASS);
+    currentPokemonId = ID;
+    updateNavigationButtons();
+}
+
+function showPreviousPokemon() {
+    if (currentPokemonId > 1) {
+        showPokemonDetails(currentPokemonId - 1);
+    }
+}
+
+async function showNextPokemon() {
+    const NEXT_ID = currentPokemonId + 1;
+    if (NEXT_ID > POKEMON_DATA.length) {
+        await loadPokemon();
+    }
+    if (NEXT_ID <= POKEMON_DATA.length) {
+        showPokemonDetails(NEXT_ID);
+    }
+}
+
+function updateNavigationButtons() {
+    const PREVIOUS_BUTTON = document.getElementById('previous-button');
+    const NEXT_BUTTON = document.getElementById('next-button');
+    PREVIOUS_BUTTON.disabled = currentPokemonId <= 1;
+    NEXT_BUTTON.disabled = currentPokemonId >= totalPokemon;
 }
 
 function renderPokedataStats(p, bgClass) {

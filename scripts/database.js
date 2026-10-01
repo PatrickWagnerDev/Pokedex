@@ -12,3 +12,10 @@ async function getType(T) {
     let currentResponse = await response.json();
     return currentResponse.sprites['generation-viii']['sword-shield'].symbol_icon;
 }
+
+async function getPokemonCount() {
+    let apiURL = `https://pokeapi.co/api/v2/pokemon-species?limit=1`;
+    let response = await fetch(apiURL);
+    let currentResponse = await response.json();
+    return currentResponse.count;
+}
