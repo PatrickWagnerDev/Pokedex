@@ -87,6 +87,22 @@ body {
     gap: 8px;
 }
 
+.load-more-button {
+    justify-content: center;
+    font: inherit;
+    cursor: pointer;
+    &:hover {
+        filter: brightness(1.15);
+    }
+    &.d-none {
+        display: none;
+    }
+}
+
+.d-none {
+    display: none;
+}
+
 .site-footer {
     display: flex;
     justify-content: flex-end;

@@ -22,7 +22,11 @@
     <main class="main-section">
         <div class="pokedex">
             <img class="pokedex-frame" src="assets/image/Pokedex_Rahmen.png" alt="Pokedex Frame">
-            <section class="poketable-wrapper" id="pokemon-card">
+            <section class="poketable-wrapper">
+                <div id="pokemon-list"></div>
+                <button id="load-more-button" class="pokemon-card load-more-button d-none" onclick="loadPokemon()">
+                    Load more
+                </button>
             </section>
             <section class="pokedata-wrapper">
 
