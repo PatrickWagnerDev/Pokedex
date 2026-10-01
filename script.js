@@ -1,5 +1,6 @@
 let loadedPokemon = 0;
 const LOAD_AMOUNT = 40;
+const POKEMON_DATA = [];
 
 function init() {
     loadPokemon();
@@ -47,6 +48,12 @@ function getCardColors(types) {
         secondType = types[1].type.name;
     }
     return `--first-type-color: var(--type-${FIRST_TYPE}); --second-type-color: var(--type-${secondType});`;
+}
+
+function showPokemonDetails(ID) {
+    const MY_POKEMON = POKEMON_DATA[ID - 1];
+    const POKEDATA_CONTAINER = document.getElementById('pokedata');
+    POKEDATA_CONTAINER.innerHTML = templatePokedata(MY_POKEMON);
 }
 
 function showLoadingScreen() {
