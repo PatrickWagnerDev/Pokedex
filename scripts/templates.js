@@ -21,11 +21,11 @@ function templateTypeIcon(icon, typeName) {
     `;
 }
 
-function templatePokedata(p, pokedataImage, pokedataTypes, pokedataStats) {
+function templatePokedata(p, pokedataImage, pokedataTypes, pokedataStats, bgClass) {
     return /*html*/`
         <div class="pokedata">
             <div class="pokedata-top">
-                <div class="pokedata-image-box">
+                <div class="pokedata-image-box ${bgClass}">
                     <img class="pokedata-image" src="${pokedataImage}" alt="${capitalizeName(p.name)}">
                 </div>
                 <div class="pokedata-info">
@@ -56,9 +56,9 @@ function templatePokedataType(T) {
     `;
 }
 
-function templatePokedataStats(leftPart, rightPart) {
+function templatePokedataStats(leftPart, rightPart, bgClass) {
     return /*html*/`
-        <div class="pokedata-stats">
+        <div class="pokedata-stats ${bgClass}">
             <div class="stats-column">
                 ${leftPart}
             </div>

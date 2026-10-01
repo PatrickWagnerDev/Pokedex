@@ -57,24 +57,25 @@ function showPokemonDetails(ID) {
     const POKEDATA_CONTAINER = document.getElementById('pokedata');
     const POKEDATA_IMAGE = getPokedataImage(MY_POKEMON);
     const POKEDATA_TYPES = renderPokedataTypes(MY_POKEMON.types);
-    const POKEDATA_STATS = renderPokedataStats(MY_POKEMON);
-    POKEDATA_CONTAINER.innerHTML = templatePokedata(MY_POKEMON, POKEDATA_IMAGE, POKEDATA_TYPES, POKEDATA_STATS);
+    const BACKGROUND_CLASS = `${MY_POKEMON.types[0].type.name}-bg`;
+    const POKEDATA_STATS = renderPokedataStats(MY_POKEMON, BACKGROUND_CLASS);
+    POKEDATA_CONTAINER.innerHTML = templatePokedata(MY_POKEMON, POKEDATA_IMAGE, POKEDATA_TYPES, POKEDATA_STATS, BACKGROUND_CLASS);
 }
 
-function renderPokedataStats(p) {
-    let leftColumn = "";
-    let rightColumn = "";
+function renderPokedataStats(p, bgClass) {
+    let leftPart = "";
+    let rightPart = "";
     for (let statIndex = 0; statIndex < p.stats.length; statIndex++) {
         const STAT_VALUE = p.stats[statIndex].base_stat;
         const STAT_PERCENT = STAT_VALUE / MAX_STAT_VALUE * 100;
         const STAT_HTML = templatePokedataOneStat(STAT_LABELS[statIndex], STAT_VALUE, STAT_PERCENT);
         if (statIndex < 3) {
-            leftColumn += STAT_HTML;
+            leftPart += STAT_HTML;
         } else {
-            rightColumn += STAT_HTML;
+            rightPart += STAT_HTML;
         }
     }
-    return templatePokedataStats(leftColumn, rightColumn);
+    return templatePokedataStats(leftPart, rightPart, bgClass);
 }
 
 function getPokedataImage(p) {
