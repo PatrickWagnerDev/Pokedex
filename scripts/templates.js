@@ -21,7 +21,7 @@ function templateTypeIcon(icon, typeName) {
     `;
 }
 
-function templatePokedata(p, pokedataImage, pokedataTypes) {
+function templatePokedata(p, pokedataImage, pokedataTypes, pokedataStats) {
     return /*html*/`
         <div class="pokedata">
             <div class="pokedata-top">
@@ -34,20 +34,18 @@ function templatePokedata(p, pokedataImage, pokedataTypes) {
                         ${pokedataTypes}
                     </div>
                     <div class="pokedata-measures">
-                        <div class="pokedata-measure">
+                        <div class="pokedata-data">
                             <span>Height</span>
                             <span>${p.height / 10} m</span>
                         </div>
-                        <div class="pokedata-measure">
+                        <div class="pokedata-data">
                             <span>Weight</span>
                             <span>${p.weight / 10} kg</span>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="pokedata-stats">
-
-            </div>
+            ${pokedataStats}
         </div>
     `;
 }
@@ -55,5 +53,30 @@ function templatePokedata(p, pokedataImage, pokedataTypes) {
 function templatePokedataType(T) {
     return /*html*/`
         <div class="pokedata-type ${T}">${T}</div>
+    `;
+}
+
+function templatePokedataStats(leftPart, rightPart) {
+    return /*html*/`
+        <div class="pokedata-stats">
+            <div class="stats-column">
+                ${leftPart}
+            </div>
+            <div class="stats-column">
+                ${rightPart}
+            </div>
+        </div>
+    `;
+}
+
+function templatePokedataOneStat(L, V, P) {
+    return /*html*/`
+        <div class="stat-row">
+            <span class="stat-label">${L}</span>
+            <div class="stat-bar">
+                <div class="stat-bar-fill" style="width: ${P}%"></div>
+                <span class="stat-value">${V}</span>
+            </div>
+        </div>
     `;
 }

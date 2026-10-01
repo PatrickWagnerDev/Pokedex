@@ -64,7 +64,7 @@ body {
 .pokedata-wrapper {
     left: 56.5%;
     width: 37.7%;
-    background-color: rgb(95, 226, 34);
+    background-color: rgb(14, 85, 11);
 }
 
 .pokedata {
@@ -143,9 +143,59 @@ body {
     gap: 4px;
 }
 
-.pokedata-measure {
+.pokedata-data {
     display: flex;
     justify-content: space-between;
+}
+
+.pokedata-stats {
+    display: flex;
+    gap: 12px;
+    padding: 8px;
+}
+
+.stats-column {
+    flex: 1;
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+.stat-row {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 1rem;
+    line-height: 1.2;
+}
+
+.stat-label {
+    min-width: 5ch;
+}
+
+.stat-bar {
+    position: relative;
+    flex: 1;
+    height: 22px;
+    background-color: rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+}
+
+.stat-bar-fill {
+    height: 100%;
+    background-color: var(--stat-bar-color);
+}
+
+.stat-value {
+    position: absolute;
+    top: 50%;
+    left: 6px;
+    translate: 0 -50%;
+    font-size: 0.9rem;
+    font-weight: bold;
+    color: var(--text-light);
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.666);
 }
 
 .pokemon-card {

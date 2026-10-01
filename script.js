@@ -1,6 +1,8 @@
 let loadedPokemon = 0;
 const LOAD_AMOUNT = 40;
 const POKEMON_DATA = [];
+const MAX_STAT_VALUE = 255;
+const STAT_LABELS = ['HP', 'ATK', 'DEF', 'SpATK', 'SpDEF', 'SPE'];
 
 function init() {
     loadPokemon();
@@ -55,7 +57,24 @@ function showPokemonDetails(ID) {
     const POKEDATA_CONTAINER = document.getElementById('pokedata');
     const POKEDATA_IMAGE = getPokedataImage(MY_POKEMON);
     const POKEDATA_TYPES = renderPokedataTypes(MY_POKEMON.types);
-    POKEDATA_CONTAINER.innerHTML = templatePokedata(MY_POKEMON, POKEDATA_IMAGE, POKEDATA_TYPES);
+    const POKEDATA_STATS = renderPokedataStats(MY_POKEMON);
+    POKEDATA_CONTAINER.innerHTML = templatePokedata(MY_POKEMON, POKEDATA_IMAGE, POKEDATA_TYPES, POKEDATA_STATS);
+}
+
+function renderPokedataStats(p) {
+    let leftColumn = "";
+    let rightColumn = "";
+    for (let statIndex = 0; statIndex < p.stats.length; statIndex++) {
+        const STAT_VALUE = p.stats[statIndex].base_stat;
+        const STAT_PERCENT = STAT_VALUE / MAX_STAT_VALUE * 100;
+        const STAT_HTML = templatePokedataOneStat(STAT_LABELS[statIndex], STAT_VALUE, STAT_PERCENT);
+        if (statIndex < 3) {
+            leftColumn += STAT_HTML;
+        } else {
+            rightColumn += STAT_HTML;
+        }
+    }
+    return templatePokedataStats(leftColumn, rightColumn);
 }
 
 function getPokedataImage(p) {
