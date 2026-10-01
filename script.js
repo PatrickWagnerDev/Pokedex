@@ -53,7 +53,26 @@ function getCardColors(types) {
 function showPokemonDetails(ID) {
     const MY_POKEMON = POKEMON_DATA[ID - 1];
     const POKEDATA_CONTAINER = document.getElementById('pokedata');
-    POKEDATA_CONTAINER.innerHTML = templatePokedata(MY_POKEMON);
+    const POKEDATA_IMAGE = getPokedataImage(MY_POKEMON);
+    const POKEDATA_TYPES = renderPokedataTypes(MY_POKEMON.types);
+    POKEDATA_CONTAINER.innerHTML = templatePokedata(MY_POKEMON, POKEDATA_IMAGE, POKEDATA_TYPES);
+}
+
+function getPokedataImage(p) {
+    if (p.sprites.other.showdown.front_default) {
+        return p.sprites.other.showdown.front_default;
+    } else {
+        return p.sprites.front_default;
+    }
+}
+
+function renderPokedataTypes(types) {
+    let typeHTML = "";
+    for (let typeIndex = 0; typeIndex < types.length; typeIndex++) {
+        const TYPE_NAME = types[typeIndex].type.name;
+        typeHTML += templatePokedataType(TYPE_NAME);
+    }
+    return typeHTML;
 }
 
 function showLoadingScreen() {
