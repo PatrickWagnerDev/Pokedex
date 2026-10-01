@@ -20,3 +20,9 @@ function templateTypeIcon(icon, typeName) {
         <img src="${icon}" class="type-icon" alt="${typeName}">
     `;
 }
+
+function templatePokedata() {
+    return /*html*/`
+        
+    `;
+}
