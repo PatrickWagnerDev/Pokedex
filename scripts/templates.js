@@ -3,7 +3,7 @@ function templatePokecard(p, typeIcons, cardColors) {
         <article class="pokemon-card" style="${cardColors}" onclick="showPokemonDetails(${p.id})">
             <div class="pokemon-card-info">
                 <p class="pokemon-id">#${p.id}</p>
-                <p>${capitalizeName(p.name)}</p>
+                <p class="pokemon-name">${capitalizeName(p.name)}</p>
             </div>
             <div class="pokemon-types">
                 ${typeIcons}

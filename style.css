@@ -304,6 +304,13 @@ body {
     min-width: 3ch;
 }
 
+.pokemon-name {
+    min-width: 0;
+    line-height: 1.1;
+    hyphens: auto;
+    overflow-wrap: break-word;
+}
+
 .pokemon-types {
     display: flex;
     align-items: center;
@@ -403,5 +410,26 @@ body {
     .pokedata-wrapper,
     .pokedata-navigation {
         display: none;
+    }
+}
+
+@media screen and (max-width: 740px) {
+    .pokemon-card {
+        height: 56px;
+        margin: 6px;
+        font-size: 0.9rem;
+    }
+
+    .pokemon-card-info,
+    .pokemon-types {
+        gap: 4px;
+    }
+
+    .type-icon {
+        height: 24px;
+    }
+
+    .pokemon-sprite {
+        height: 56px;
     }
 }
