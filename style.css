@@ -97,9 +97,7 @@ body {
     border: clamp(3px, 0.5vw, 8px) solid black;
     border-radius: 12px;
     background-color: var(--button-blue);
-    box-shadow: inset -5px -5px 0 rgba(0, 0, 0, 0.25);
     color: var(--text-light);
-    font: inherit;
     font-size: clamp(1.5rem, 4vw, 4rem);
     font-weight: bold;
     line-height: 1;
@@ -162,6 +160,8 @@ body {
 
 .pokedata-image {
     height: 70%;
+    max-width: 90%;
+    object-fit: contain;
 }
 
 .pokedata-info {

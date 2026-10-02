@@ -34,6 +34,7 @@ async function loadNextPokemon() {
     }
     loadedPokemon = END_ID;
 }
+
 async function renderPokecard(p) {
     const POKEMON_LIST = document.getElementById('pokemon-list');
     const TYPE_ICONS = await renderTypeIcons(p.types);
