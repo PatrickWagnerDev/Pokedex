@@ -659,4 +659,9 @@ body:has(.pokedata-dialog[open]) {
         height: 36px;
         font-size: 1.25rem;
     }
+
+    .site-footer {
+        flex-direction: column;
+        gap: 0;
+    }
 }
