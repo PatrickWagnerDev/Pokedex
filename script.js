@@ -5,6 +5,7 @@ const LOAD_AMOUNT = 40;
 const POKEMON_DATA = [];
 const MAX_STAT_VALUE = 255;
 const STAT_LABELS = ['HP', 'ATK', 'DEF', 'SpATK', 'SpDEF', 'SPE'];
+const DIALOG_ANIMATION_DURATION = 300;
 
 async function init() {
     totalPokemon = await getPokemonCount();
@@ -84,14 +85,27 @@ function openPokedataDialog() {
 }
 
 function closePokedataDialog() {
-    document.getElementById('pokedata-dialog').close();
+    const DIALOG = document.getElementById('pokedata-dialog');
+    DIALOG.classList.add('dialog-closing');
+    setTimeout(finishClosingDialog, DIALOG_ANIMATION_DURATION);
+}
+
+function finishClosingDialog() {
+    const DIALOG = document.getElementById('pokedata-dialog');
+    DIALOG.classList.remove('dialog-closing');
+    DIALOG.close();
 }
 
 function closeDialogOnBackdrop(event) {
     const DIALOG = document.getElementById('pokedata-dialog');
     if (event.target === DIALOG) {
-        DIALOG.close();
+        closePokedataDialog();
     }
+}
+
+function handleDialogCancel(event) {
+    event.preventDefault();
+    closePokedataDialog();
 }
 
 function showPreviousPokemon() {
@@ -111,10 +125,12 @@ async function showNextPokemon() {
 }
 
 function updateNavigationButtons() {
-    const PREVIOUS_BUTTON = document.getElementById('previous-button');
-    const NEXT_BUTTON = document.getElementById('next-button');
-    PREVIOUS_BUTTON.disabled = currentPokemonId <= 1;
-    NEXT_BUTTON.disabled = currentPokemonId >= totalPokemon;
+    const PREVIOUS_BUTTONS = document.querySelectorAll('.previous-button');
+    const NEXT_BUTTONS = document.querySelectorAll('.next-button');
+    for (let buttonIndex = 0; buttonIndex < PREVIOUS_BUTTONS.length; buttonIndex++) {
+        PREVIOUS_BUTTONS[buttonIndex].disabled = currentPokemonId <= 1;
+        NEXT_BUTTONS[buttonIndex].disabled = currentPokemonId >= totalPokemon;
+    }
 }
 
 function renderPokedataStats(p, bgClass) {
@@ -152,13 +168,13 @@ function renderPokedataTypes(types) {
 
 function showLoadingScreen() {
     const LOADING_OVERLAY = document.getElementById('loading-overlay');
-    LOADING_OVERLAY.classList.remove('d-none');
+    LOADING_OVERLAY.showPopover();
     document.body.classList.add('no-scroll');
 }
 
 function hideLoadingScreen() {
     const LOADING_OVERLAY = document.getElementById('loading-overlay');
-    LOADING_OVERLAY.classList.add('d-none');
+    LOADING_OVERLAY.hidePopover();
     document.body.classList.remove('no-scroll');
 }
 

@@ -349,14 +349,17 @@ body {
 .loading-overlay {
     position: fixed;
     inset: 0;
-    z-index: 10;
-    display: flex;
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    border: none;
     justify-content: center;
     align-items: center;
     background-color: rgba(0, 0, 0, 0.666);
 
-    &.d-none {
-        display: none;
+    &:popover-open {
+        display: flex;
     }
 }
 
@@ -382,6 +385,7 @@ body {
 .pokedata-dialog {
     width: min(90vw, 560px);
     height: min(80dvh, 480px);
+    margin: auto;
     padding: 0;
     border: 4px ridge green;
     border-radius: 12px;
@@ -390,11 +394,67 @@ body {
     &::backdrop {
         background-color: rgba(0, 0, 0, 0.666);
     }
+
+    &[open] {
+        display: flex;
+        flex-direction: column;
+        animation: dialog-slide-in 0.3s ease-out;
+    }
+
+    &[open]::backdrop {
+        animation: backdrop-fade-in 0.3s ease-out;
+    }
+
+    &.dialog-closing {
+        animation: dialog-slide-out 0.3s ease-in forwards;
+    }
+
+    &.dialog-closing::backdrop {
+        animation: backdrop-fade-out 0.3s ease-in forwards;
+    }
+}
+
+@keyframes dialog-slide-in {
+    from {
+        translate: 0 100vh;
+    }
+}
+
+@keyframes dialog-slide-out {
+    to {
+        translate: 0 100vh;
+    }
+}
+
+@keyframes backdrop-fade-in {
+    from {
+        opacity: 0;
+    }
+}
+
+@keyframes backdrop-fade-out {
+    to {
+        opacity: 0;
+    }
 }
 
 .pokedata-dialog-content {
-    height: 100%;
+    flex: 1;
+    min-height: 0;
     padding-top: 24px;
+}
+
+.dialog-navigation {
+    display: flex;
+    justify-content: space-between;
+    padding: 0 8px 8px;
+}
+
+.dialog-navigation .navigation-button {
+    height: 44px;
+    border-width: 3px;
+    border-radius: 8px;
+    font-size: 1.5rem;
 }
 
 .dialog-close-button {
