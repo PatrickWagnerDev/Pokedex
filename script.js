@@ -1,6 +1,7 @@
 let loadedPokemon = 0;
 let currentPokemonId = 0;
 let totalPokemon = 0;
+let isLoading = false;
 const LOAD_AMOUNT = 40;
 const POKEMON_DATA = [];
 const MAX_STAT_VALUE = 255;
@@ -109,12 +110,15 @@ function handleDialogCancel(event) {
 }
 
 function showPreviousPokemon() {
-    if (currentPokemonId > 1) {
+    if (!isLoading && currentPokemonId > 1) {
         showPokemonDetails(currentPokemonId - 1);
     }
 }
 
 async function showNextPokemon() {
+    if (isLoading) {
+        return;
+    }
     const NEXT_ID = currentPokemonId + 1;
     if (NEXT_ID > POKEMON_DATA.length) {
         await loadPokemon();
@@ -170,12 +174,14 @@ function showLoadingScreen() {
     const LOADING_OVERLAY = document.getElementById('loading-overlay');
     LOADING_OVERLAY.showPopover();
     document.body.classList.add('no-scroll');
+    isLoading = true;
 }
 
 function hideLoadingScreen() {
     const LOADING_OVERLAY = document.getElementById('loading-overlay');
     LOADING_OVERLAY.hidePopover();
     document.body.classList.remove('no-scroll');
+    isLoading = false;
 }
 
 function capitalizeName(i) {
