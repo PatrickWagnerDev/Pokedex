@@ -63,14 +63,35 @@ function getCardColors(types) {
 
 function showPokemonDetails(ID) {
     const MY_POKEMON = POKEMON_DATA[ID - 1];
-    const POKEDATA_CONTAINER = document.getElementById('pokedata');
     const POKEDATA_IMAGE = getPokedataImage(MY_POKEMON);
     const POKEDATA_TYPES = renderPokedataTypes(MY_POKEMON.types);
     const BACKGROUND_CLASS = `${MY_POKEMON.types[0].type.name}-bg`;
     const POKEDATA_STATS = renderPokedataStats(MY_POKEMON, BACKGROUND_CLASS);
-    POKEDATA_CONTAINER.innerHTML = templatePokedata(MY_POKEMON, POKEDATA_IMAGE, POKEDATA_TYPES, POKEDATA_STATS, BACKGROUND_CLASS);
+    const POKEDATA_HTML = templatePokedata(MY_POKEMON, POKEDATA_IMAGE, POKEDATA_TYPES, POKEDATA_STATS, BACKGROUND_CLASS);
+    document.getElementById('pokedata').innerHTML = POKEDATA_HTML;
+    document.getElementById('pokedata-dialog-content').innerHTML = POKEDATA_HTML;
     currentPokemonId = ID;
     updateNavigationButtons();
+    openPokedataDialog();
+}
+
+function openPokedataDialog() {
+    const DIALOG = document.getElementById('pokedata-dialog');
+    const IS_MOBILE = window.matchMedia('(max-width: 1400px)').matches;
+    if (IS_MOBILE && !DIALOG.open) {
+        DIALOG.showModal();
+    }
+}
+
+function closePokedataDialog() {
+    document.getElementById('pokedata-dialog').close();
+}
+
+function closeDialogOnBackdrop(event) {
+    const DIALOG = document.getElementById('pokedata-dialog');
+    if (event.target === DIALOG) {
+        DIALOG.close();
+    }
 }
 
 function showPreviousPokemon() {

@@ -23,7 +23,7 @@
     <main class="main-section">
         <div class="pokedex">
             <img class="pokedex-frame pokedex-frame-desktop" src="assets/image/Pokedex_Rahmen.png" alt="Pokedex Frame">
-            <img class="pokedex-frame pokedex-frame-mobile" src="assets/image/Pokedex_Rahmen_mobile.png"alt="Pokedex Frame">
+            <img class="pokedex-frame pokedex-frame-mobile" src="assets/image/Pokedex_Rahmen_mobile.png" alt="Pokedex Frame">
             <section class="poketable-wrapper">
                 <div id="pokemon-list"></div>
                 <button id="load-more-button" class="pokemon-card load-more-button d-none" onclick="loadPokemon()">
@@ -45,6 +45,10 @@
     <div id="loading-overlay" class="loading-overlay d-none">
         <img class="loading-spinner" src="assets/icons/Pokeball_Loadindicator.png" alt="Loading...">
     </div>
+    <dialog id="pokedata-dialog" class="pokedata-dialog" onclick="closeDialogOnBackdrop(event)">
+        <button class="dialog-close-button" onclick="closePokedataDialog()" aria-label="Close">X</button>
+        <div id="pokedata-dialog-content" class="pokedata-dialog-content"></div>
+    </dialog>
     <footer class="site-footer">
         <a href="#">Impressum</a>
         <a href="#">Cookie Preferences</a>

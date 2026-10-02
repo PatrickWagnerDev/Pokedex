@@ -379,6 +379,46 @@ body {
     overflow: hidden;
 }
 
+.pokedata-dialog {
+    width: min(90vw, 560px);
+    height: min(80dvh, 480px);
+    padding: 0;
+    border: 4px ridge green;
+    border-radius: 12px;
+    background-color: rgb(14, 85, 11);
+
+    &::backdrop {
+        background-color: rgba(0, 0, 0, 0.666);
+    }
+}
+
+.pokedata-dialog-content {
+    height: 100%;
+    padding-top: 24px;
+}
+
+.dialog-close-button {
+    position: absolute;
+    top: 4px;
+    left: 8px;
+    padding: 0;
+    border: none;
+    background: none;
+    color: var(--text-light);
+    font: inherit;
+    font-size: 1rem;
+    line-height: 1;
+    cursor: pointer;
+
+    &:hover {
+        opacity: 0.7;
+    }
+}
+
+body:has(.pokedata-dialog[open]) {
+    overflow: hidden;
+}
+
 .site-footer {
     display: flex;
     justify-content: flex-end;
