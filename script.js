@@ -60,7 +60,10 @@ function getCardColors(types) {
     if (types.length > 1) {
         secondType = types[1].type.name;
     }
-    return `--first-type-color: var(--type-${FIRST_TYPE}); --second-type-color: var(--type-${secondType});`;
+    return /*html*/`
+        --first-type-color: var(--type-${FIRST_TYPE});
+        --second-type-color: var(--type-${secondType});
+        `;
 }
 
 function showPokemonDetails(ID) {
