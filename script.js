@@ -8,6 +8,7 @@ const MAX_STAT_VALUE = 255;
 const STAT_LABELS = ['HP', 'ATK', 'DEF', 'SpATK', 'SpDEF', 'SPE'];
 const DIALOG_ANIMATION_DURATION = 300;
 const ALL_POKEMON_NAMES = [];
+const TYPE_ICON_CACHE = {};
 
 async function init() {
     totalPokemon = await getPokemonCount();
@@ -48,12 +49,19 @@ async function renderPokecard(p) {
 
 async function renderTypeIcons(types) {
     let typeHTML = "";
-    for (let typeIndex = 0; typeIndex < types.length; typeIndex++) {
-        const TYPE_NAME = types[typeIndex].type.name;
-        const TYPE_ICON = await getType(TYPE_NAME);
+    for (let i = 0; i < types.length; i++) {
+        const TYPE_NAME = types[i].type.name;
+        const TYPE_ICON = await getTypeIcon(TYPE_NAME);
         typeHTML += templateTypeIcon(TYPE_ICON, TYPE_NAME);
     }
     return typeHTML;
+}
+
+async function getTypeIcon(typeName) {
+    if (!TYPE_ICON_CACHE[typeName]) {
+        TYPE_ICON_CACHE[typeName] = await getType(typeName);
+    }
+    return TYPE_ICON_CACHE[typeName];
 }
 
 function getCardColors(types) {

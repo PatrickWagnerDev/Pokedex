@@ -17,10 +17,12 @@
 
 <body onload="init()">
     <header class="site-header">
-        <img src="assets/image/Pokedex_Logo.png" alt="Pokedex Logo">
+        <h1 class="site-title">
+            <img src="assets/image/Pokedex_Logo.png" alt="Pokédex">
+        </h1>
         <div class="search-wrapper">
-            <input id="search-input" aria-label="Search Pokémon" type="text" placeholder="Please enter Pokemon name..."
-                oninput="searchPokemon()">
+            <input id="search-input" aria-label="Search Pokémon" aria-controls="search-results" type="text"
+                placeholder="Please enter Pokemon name..." oninput="searchPokemon()">
             <div id="search-results" class="search-results"></div>
         </div>
     </header>
@@ -34,7 +36,7 @@
                     Load more
                 </button>
             </section>
-            <section class="pokedata-wrapper" id="pokedata">
+            <section class="pokedata-wrapper" id="pokedata" aria-live="polite">
                 <div class="pokedata-placeholder">
                     <p>Select Pokémon</p>
                 </div>
@@ -53,7 +55,7 @@
     <dialog aria-label="Pokémon details" id="pokedata-dialog" class="pokedata-dialog"
         onclick="closeDialogOnBackdrop(event)" oncancel="handleDialogCancel(event)">
         <button class="dialog-close-button" onclick="closePokedataDialog()" aria-label="Close">X</button>
-        <div id="pokedata-dialog-content" class="pokedata-dialog-content"></div>
+        <div id="pokedata-dialog-content" class="pokedata-dialog-content" aria-live="polite"></div>
         <div class="dialog-navigation">
             <button aria-label="Previous Pokémon" class="navigation-button previous-button"
                 onclick="showPreviousPokemon()" disabled>&lt;</button>
