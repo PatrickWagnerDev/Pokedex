@@ -18,7 +18,7 @@
 <body onload="init()">
     <header class="site-header">
         <img src="assets/image/Pokedex_Logo.png" alt="Pokedex Logo">
-        <input aria-label="Search Pokémon" type="text" placeholder="Please enter Pokemon name...">
+        <input id="search-input" aria-label="Search Pokémon" type="text" placeholder="Please enter Pokemon name..." oninput="searchPokemon()">
     </header>
     <main class="main-section">
         <div class="pokedex">

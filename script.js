@@ -7,9 +7,11 @@ const POKEMON_DATA = [];
 const MAX_STAT_VALUE = 255;
 const STAT_LABELS = ['HP', 'ATK', 'DEF', 'SpATK', 'SpDEF', 'SPE'];
 const DIALOG_ANIMATION_DURATION = 300;
+const ALL_POKEMON_NAMES = [];
 
 async function init() {
     totalPokemon = await getPokemonCount();
+    getAllPokemonNames(totalPokemon);
     loadPokemon();
 }
 
@@ -192,6 +194,18 @@ function hideLoadingScreen() {
     LOADING_OVERLAY.hidePopover();
     document.body.classList.remove('no-scroll');
     isLoading = false;
+}
+
+function searchPokemon() {
+    const SEARCH_INPUT = document.getElementById('search-input');
+    const SEARCH_TERM = SEARCH_INPUT.value.trim().toLowerCase();
+    if (SEARCH_TERM.length < 3) {
+        return;
+    }
+    const RESULTS = ALL_POKEMON_NAMES.filter(function (name) {
+        return name.includes(SEARCH_TERM);
+    });
+    console.log(RESULTS);
 }
 
 function capitalizeName(i) {

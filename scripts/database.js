@@ -37,3 +37,18 @@ async function getPokemonCount() {
         console.error(error.message);
     }
 }
+
+async function getAllPokemonNames(A) {
+    try {
+        const RESPONSE = await fetch(`https://pokeapi.co/api/v2/pokemon?limit=${A}`);
+        if (!RESPONSE.ok) {
+            throw new Error(`Error Code: ${RESPONSE.status}`);
+        }
+        const LIST_DATA = await RESPONSE.json();
+        for (let nameIndex = 0; nameIndex < LIST_DATA.results.length; nameIndex++) {
+            ALL_POKEMON_NAMES.push(LIST_DATA.results[nameIndex].name);
+        }
+    } catch (error) {
+        console.error(error.message);
+    }
+}
