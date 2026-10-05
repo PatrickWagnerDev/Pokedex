@@ -200,12 +200,28 @@ function searchPokemon() {
     const SEARCH_INPUT = document.getElementById('search-input');
     const SEARCH_TERM = SEARCH_INPUT.value.trim().toLowerCase();
     if (SEARCH_TERM.length < 3) {
+        renderSearchResults([]);
         return;
     }
     const RESULTS = ALL_POKEMON_NAMES.filter(function (name) {
         return name.includes(SEARCH_TERM);
     });
-    console.log(RESULTS);
+    renderSearchResults(RESULTS);
+}
+
+function renderSearchResults(results) {
+    const SEARCH_RESULTS = document.getElementById('search-results');
+    let resultsHTML = '';
+    for (let resultIndex = 0; resultIndex < results.length; resultIndex++) {
+        const NAME = results[resultIndex];
+        const ID = ALL_POKEMON_NAMES.indexOf(NAME) + 1;
+        resultsHTML += templateSearchResult(NAME, ID);
+    }
+    SEARCH_RESULTS.innerHTML = resultsHTML;
+}
+
+function selectSearchResult(ID) {
+    console.log(ID);
 }
 
 function capitalizeName(i) {

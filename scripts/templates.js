@@ -82,3 +82,9 @@ function templatePokedataOneStat(L, V, P) {
         </div>
     `;
 }
+
+function templateSearchResult(name, id) {
+    return /*html*/`
+        <button class="search-result" onclick="selectSearchResult(${id})">${capitalizeName(name)}</button>
+    `;
+}

@@ -18,7 +18,11 @@
 <body onload="init()">
     <header class="site-header">
         <img src="assets/image/Pokedex_Logo.png" alt="Pokedex Logo">
-        <input id="search-input" aria-label="Search Pokémon" type="text" placeholder="Please enter Pokemon name..." oninput="searchPokemon()">
+        <div class="search-wrapper">
+            <input id="search-input" aria-label="Search Pokémon" type="text" placeholder="Please enter Pokemon name..."
+                oninput="searchPokemon()">
+            <div id="search-results" class="search-results"></div>
+        </div>
     </header>
     <main class="main-section">
         <div class="pokedex">
@@ -36,20 +40,25 @@
                 </div>
             </section>
             <div class="pokedata-navigation">
-                <button aria-label="Previous Pokémon" class="navigation-button previous-button"onclick="showPreviousPokemon()" disabled>&lt;</button>
-                <button aria-label="Next Pokémon" class="navigation-button next-button" onclick="showNextPokemon()" disabled>&gt;</button>
+                <button aria-label="Previous Pokémon" class="navigation-button previous-button"
+                    onclick="showPreviousPokemon()" disabled>&lt;</button>
+                <button aria-label="Next Pokémon" class="navigation-button next-button" onclick="showNextPokemon()"
+                    disabled>&gt;</button>
             </div>
         </div>
     </main>
     <div id="loading-overlay" class="loading-overlay" popover="manual">
         <img role="status" class="loading-spinner" src="assets/icons/Pokeball_Loadindicator.png" alt="Loading...">
     </div>
-    <dialog aria-label="Pokémon details" id="pokedata-dialog" class="pokedata-dialog" onclick="closeDialogOnBackdrop(event)" oncancel="handleDialogCancel(event)">
+    <dialog aria-label="Pokémon details" id="pokedata-dialog" class="pokedata-dialog"
+        onclick="closeDialogOnBackdrop(event)" oncancel="handleDialogCancel(event)">
         <button class="dialog-close-button" onclick="closePokedataDialog()" aria-label="Close">X</button>
         <div id="pokedata-dialog-content" class="pokedata-dialog-content"></div>
         <div class="dialog-navigation">
-            <button aria-label="Previous Pokémon" class="navigation-button previous-button"onclick="showPreviousPokemon()" disabled>&lt;</button>
-            <button aria-label="Next Pokémon" class="navigation-button next-button" onclick="showNextPokemon()" disabled>&gt;</button>
+            <button aria-label="Previous Pokémon" class="navigation-button previous-button"
+                onclick="showPreviousPokemon()" disabled>&lt;</button>
+            <button aria-label="Next Pokémon" class="navigation-button next-button" onclick="showNextPokemon()"
+                disabled>&gt;</button>
         </div>
     </dialog>
     <footer class="site-footer">
