@@ -1,6 +1,6 @@
 function templatePokecard(p, typeIcons, cardColors) {
     return /*html*/`
-        <article class="pokemon-card" style="${cardColors}" onclick="showPokemonDetails(${p.id})">
+        <article aria-label="Show details of ${capitalizeName(p.name)}" role="button" tabindex="0" class="pokemon-card" style="${cardColors}" onclick="showPokemonDetails(${p.id})" onkeydown="whenCardKeydown(event, ${p.id})">
             <div class="pokemon-card-main">
                 <div class="pokemon-card-info">
                     <p class="pokemon-id">#${p.id}</p>

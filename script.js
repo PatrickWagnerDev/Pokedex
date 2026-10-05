@@ -180,6 +180,13 @@ function showLoadingScreen() {
     isLoading = true;
 }
 
+function whenCardKeydown(event, ID) {
+    if (event.key === 'Enter' || event.key === ' ') {
+        event.preventDefault();
+        showPokemonDetails(ID);
+    }
+}
+
 function hideLoadingScreen() {
     const LOADING_OVERLAY = document.getElementById('loading-overlay');
     LOADING_OVERLAY.hidePopover();
