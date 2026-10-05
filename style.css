@@ -72,6 +72,12 @@ body {
     }
 }
 
+.search-no-match {
+    padding: 6px 12px;
+    color: var(--text-light);
+    opacity: 0.7;
+}
+
 .main-section {
     flex: 1;
     padding: var(--content-limitation);

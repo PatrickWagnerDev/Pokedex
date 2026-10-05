@@ -88,3 +88,9 @@ function templateSearchResult(name, id) {
         <button class="search-result" onclick="selectSearchResult(${id})">${capitalizeName(name)}</button>
     `;
 }
+
+function templateNoMatch() {
+    return /*html*/`
+        <p class="search-no-match" data-id="not-found">No match found</p>
+    `;
+}

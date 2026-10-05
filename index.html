@@ -22,11 +22,11 @@
         </h1>
         <div class="search-wrapper">
             <input id="search-input" aria-label="Search Pokémon" aria-controls="search-results" type="text"
-                placeholder="Please enter Pokemon name..." oninput="searchPokemon()">
+                placeholder="Please enter Pokemon name..." oninput="searchPokemon()" data-id="search-input">
             <div id="search-results" class="search-results"></div>
         </div>
     </header>
-    <main class="main-section">
+    <main class="main-section" data-id="content">
         <div class="pokedex">
             <img class="pokedex-frame pokedex-frame-desktop" src="assets/image/Pokedex_Rahmen.png" alt="">
             <img class="pokedex-frame pokedex-frame-mobile" src="assets/image/Pokedex_Rahmen_mobile.png" alt="">

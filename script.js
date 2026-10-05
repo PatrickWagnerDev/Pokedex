@@ -214,7 +214,24 @@ function searchPokemon() {
     const RESULTS = ALL_POKEMON_NAMES.filter(function (name) {
         return name.includes(SEARCH_TERM);
     });
-    renderSearchResults(RESULTS);
+    showSearchResults(RESULTS);
+    announceSearchResults(RESULTS.length);
+}
+
+function showSearchResults(results) {
+    if (results.length === 0) {
+        document.getElementById('search-results').innerHTML = templateNoMatch();
+    } else {
+        renderSearchResults(results);
+    }
+}
+
+function announceSearchResults(count) {
+    if (count === 0) {
+        announce('No match found');
+    } else {
+        announce(`${count} Pokémon found`);
+    }
 }
 
 function renderSearchResults(results) {
