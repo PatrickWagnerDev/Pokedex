@@ -1,3 +1,7 @@
+/**
+ * Loads a Pokémon from the API, stores it in POKEMON_DATA and renders its card.
+ * @param {number} pokemonId - The id of the Pokémon to load.
+ */
 async function getData(pokemonId) {
     try {
         const RESPONSE = await fetch(`https://pokeapi.co/api/v2/pokemon/${pokemonId}`);
@@ -12,6 +16,11 @@ async function getData(pokemonId) {
     }
 }
 
+/**
+ * Loads a single Pokémon from the API without storing or rendering it.
+ * @param {number} ID - The id of the Pokémon to load.
+ * @returns {Promise<Object|undefined>} The Pokémon data, or undefined if loading failed.
+ */
 async function getSinglePokemon(ID) {
     try {
         const RESPONSE = await fetch(`https://pokeapi.co/api/v2/pokemon/${ID}`);
@@ -24,6 +33,11 @@ async function getSinglePokemon(ID) {
     }
 }
 
+/**
+ * Loads the symbol icon URL of a Pokémon type from the API.
+ * @param {string} typeName - The name of the type.
+ * @returns {Promise<string|undefined>} The URL of the icon, or undefined if loading failed.
+ */
 async function getType(typeName) {
     try {
         const RESPONSE = await fetch(`https://pokeapi.co/api/v2/type/${typeName}`);
@@ -37,6 +51,10 @@ async function getType(typeName) {
     }
 }
 
+/**
+ * Loads the total number of Pokémon species from the API.
+ * @returns {Promise<number|undefined>} The number of Pokémon, or undefined if loading failed.
+ */
 async function getPokemonCount() {
     try {
         const RESPONSE = await fetch('https://pokeapi.co/api/v2/pokemon-species?limit=1');
@@ -50,6 +68,10 @@ async function getPokemonCount() {
     }
 }
 
+/**
+ * Loads the names of all Pokémon and stores them in ALL_POKEMON_NAMES.
+ * @param {number} amount - The number of Pokémon names to load.
+ */
 async function getAllPokemonNames(amount) {
     try {
         const RESPONSE = await fetch(`https://pokeapi.co/api/v2/pokemon?limit=${amount}`);
@@ -57,8 +79,8 @@ async function getAllPokemonNames(amount) {
             throw new Error(`Error Code: ${RESPONSE.status}`);
         }
         const LIST_DATA = await RESPONSE.json();
-        for (let nameIndex = 0; nameIndex < LIST_DATA.results.length; nameIndex++) {
-            ALL_POKEMON_NAMES.push(LIST_DATA.results[nameIndex].name);
+        for (let i = 0; i < LIST_DATA.results.length; i++) {
+            ALL_POKEMON_NAMES.push(LIST_DATA.results[i].name);
         }
     } catch (error) {
         console.error(error.message);
