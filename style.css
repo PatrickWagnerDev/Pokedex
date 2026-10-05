@@ -436,7 +436,8 @@ body {
 
 .pokedata-dialog {
     width: min(90vw, 560px);
-    height: min(80dvh, 480px);
+    height: fit-content;
+    max-height: 90dvh;
     margin: auto;
     padding: 0;
     border: 4px ridge green;
@@ -493,7 +494,25 @@ body {
 .pokedata-dialog-content {
     flex: 1;
     min-height: 0;
+    overflow-y: auto;
     padding-top: 24px;
+}
+
+.pokedata-dialog .pokedata {
+    height: auto;
+}
+
+.pokedata-dialog .pokedata-top,
+.pokedata-dialog .pokedata-stats {
+    flex: none;
+}
+
+.pokedata-dialog .pokedata-image-box {
+    height: 180px;
+}
+
+.pokedata-dialog .stats-column {
+    gap: 8px;
 }
 
 .dialog-navigation {
@@ -512,7 +531,7 @@ body {
 .dialog-close-button {
     position: absolute;
     top: 4px;
-    left: 8px;
+    right: 8px;
     padding: 0;
     border: none;
     background: none;
@@ -606,22 +625,8 @@ body:has(.pokedata-dialog[open]) {
         height: 48px;
     }
 
-    .pokedata-dialog {
-        height: auto;
-        max-height: 90dvh;
-    }
-
-    .pokedata-dialog-content {
-        overflow-y: auto;
-    }
-
-    .pokedata-dialog .pokedata {
-        height: auto;
-    }
-
     .pokedata-dialog .pokedata-top,
     .pokedata-dialog .pokedata-stats {
-        flex: none;
         flex-direction: column;
     }
 
@@ -631,10 +636,6 @@ body:has(.pokedata-dialog[open]) {
     }
 
     .pokedata-dialog .pokedata-stats {
-        gap: 8px;
-    }
-
-    .pokedata-dialog .stats-column {
         gap: 8px;
     }
 

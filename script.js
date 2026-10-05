@@ -215,7 +215,6 @@ function searchPokemon() {
         return name.includes(SEARCH_TERM);
     });
     showSearchResults(RESULTS);
-    announceSearchResults(RESULTS.length);
 }
 
 function showSearchResults(results) {
@@ -223,14 +222,6 @@ function showSearchResults(results) {
         document.getElementById('search-results').innerHTML = templateNoMatch();
     } else {
         renderSearchResults(results);
-    }
-}
-
-function announceSearchResults(count) {
-    if (count === 0) {
-        announce('No match found');
-    } else {
-        announce(`${count} Pokémon found`);
     }
 }
 
