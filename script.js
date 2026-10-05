@@ -220,8 +220,23 @@ function renderSearchResults(results) {
     SEARCH_RESULTS.innerHTML = resultsHTML;
 }
 
-function selectSearchResult(ID) {
-    console.log(ID);
+async function selectSearchResult(ID) {
+    if (isLoading) {
+        return;
+    }
+    clearSearch();
+    while (POKEMON_DATA.length < ID && loadedPokemon < totalPokemon) {
+        await loadPokemon();
+    }
+    if (ID <= POKEMON_DATA.length) {
+        showPokemonDetails(ID);
+    }
+}
+
+function clearSearch() {
+    const SEARCH_INPUT = document.getElementById('search-input');
+    SEARCH_INPUT.value = '';
+    renderSearchResults([]);
 }
 
 function capitalizeName(i) {
