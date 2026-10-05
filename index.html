@@ -32,7 +32,7 @@
             <img class="pokedex-frame pokedex-frame-mobile" src="assets/image/Pokedex_Rahmen_mobile.png" alt="">
             <section class="poketable-wrapper">
                 <div id="pokemon-list"></div>
-                <button id="load-more-button" class="pokemon-card load-more-button d-none" onclick="loadPokemon()">
+                <button id="load-more-button" class="pokemon-card load-more-button d-none" onclick="loadPokemon()" data-id="load-more-button">
                     Load more
                 </button>
             </section>
@@ -43,8 +43,8 @@
             </section>
             <div class="pokedata-navigation">
                 <button aria-label="Previous Pokémon" class="navigation-button previous-button"
-                    onclick="showPreviousPokemon()" disabled>&lt;</button>
-                <button aria-label="Next Pokémon" class="navigation-button next-button" onclick="showNextPokemon()"
+                    onclick="showPreviousPokemon()" data-id="prev-button" disabled>&lt;</button>
+                <button aria-label="Next Pokémon" class="navigation-button next-button" onclick="showNextPokemon()" data-id="next-button"
                     disabled>&gt;</button>
             </div>
         </div>
@@ -53,13 +53,13 @@
         <img role="status" class="loading-spinner" src="assets/icons/Pokeball_Loadindicator.png" alt="Loading...">
     </div>
     <dialog aria-label="Pokémon details" id="pokedata-dialog" class="pokedata-dialog"
-        onclick="closeDialogOnBackdrop(event)" oncancel="handleDialogCancel(event)">
-        <button class="dialog-close-button" onclick="closePokedataDialog()" aria-label="Close">X</button>
-        <div id="pokedata-dialog-content" class="pokedata-dialog-content" aria-live="polite"></div>
+        onclick="closeDialogOnBackdrop(event)" oncancel="handleDialogCancel(event)" data-id="dialog">
+        <button class="dialog-close-button" onclick="closePokedataDialog()" aria-label="Close" data-id="close-dialog-button">X</button>
+        <div id="pokedata-dialog-content" class="pokedata-dialog-content" aria-live="polite" data-id="overlay-pokemon-name"></div>
         <div class="dialog-navigation">
             <button aria-label="Previous Pokémon" class="navigation-button previous-button"
-                onclick="showPreviousPokemon()" disabled>&lt;</button>
-            <button aria-label="Next Pokémon" class="navigation-button next-button" onclick="showNextPokemon()"
+                onclick="showPreviousPokemon()" data-id="prev-button" disabled>&lt;</button>
+            <button aria-label="Next Pokémon" class="navigation-button next-button" onclick="showNextPokemon()" data-id="next-button"
                 disabled>&gt;</button>
         </div>
     </dialog>

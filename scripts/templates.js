@@ -1,6 +1,6 @@
 function templatePokecard(p, typeIcons, cardColors) {
     return /*html*/`
-        <article aria-label="Show details of ${capitalizeName(p.name)}" role="button" tabindex="0" class="pokemon-card" style="${cardColors}" onclick="showPokemonDetails(${p.id})" onkeydown="whenCardKeydown(event, ${p.id})">
+        <article aria-label="Show details of ${capitalizeName(p.name)}" role="button" tabindex="0" class="pokemon-card" style="${cardColors}" onclick="showPokemonDetails(${p.id})" onkeydown="whenCardKeydown(event, ${p.id})" data-id="card">
             <div class="pokemon-card-main">
                 <div class="pokemon-card-info">
                     <p class="pokemon-id">#${p.id}</p>
@@ -11,7 +11,7 @@ function templatePokecard(p, typeIcons, cardColors) {
                 </div>
             </div>
             <div class="pokemon-sprite-wrapper">
-                <img class="pokemon-sprite" src="${p.sprites.front_default}" alt="${capitalizeName(p.name)} sprite">
+                <img class="pokemon-sprite" src="${p.sprites.front_default}" alt="${capitalizeName(p.name)} sprite" data-id="card-image">
             </div>
         </article>
     `;
@@ -28,7 +28,7 @@ function templatePokedata(p, pokedataImage, pokedataTypes, pokedataStats, bgClas
         <div class="pokedata">
             <div class="pokedata-top">
                 <div class="pokedata-image-box ${bgClass}">
-                    <img class="pokedata-image" src="${pokedataImage}" alt="${capitalizeName(p.name)}">
+                    <img class="pokedata-image" src="${pokedataImage}" alt="${capitalizeName(p.name)}" data-id="dialog-image">
                 </div>
                 <div class="pokedata-info">
                     <p class="pokedata-title">#${p.id} ${capitalizeName(p.name)}</p>
