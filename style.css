@@ -521,6 +521,10 @@ body {
     padding: 0 8px 8px;
 }
 
+.pokedata-dialog.search-mode .dialog-navigation {
+    display: none;
+}
+
 .dialog-navigation .navigation-button {
     height: 44px;
     border-width: 3px;

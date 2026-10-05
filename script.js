@@ -77,17 +77,27 @@ function getCardColors(types) {
 }
 
 function showPokemonDetails(ID) {
-    const MY_POKEMON = POKEMON_DATA[ID - 1];
-    const POKEDATA_IMAGE = getPokedataImage(MY_POKEMON);
-    const POKEDATA_TYPES = renderPokedataTypes(MY_POKEMON.types);
-    const BACKGROUND_CLASS = `${MY_POKEMON.types[0].type.name}-bg`;
-    const POKEDATA_STATS = renderPokedataStats(MY_POKEMON, BACKGROUND_CLASS);
-    const POKEDATA_HTML = templatePokedata(MY_POKEMON, POKEDATA_IMAGE, POKEDATA_TYPES, POKEDATA_STATS, BACKGROUND_CLASS);
+    const POKEDATA_HTML = buildPokedataHTML(POKEMON_DATA[ID - 1]);
     document.getElementById('pokedata').innerHTML = POKEDATA_HTML;
     document.getElementById('pokedata-dialog-content').innerHTML = POKEDATA_HTML;
     currentPokemonId = ID;
     updateNavigationButtons();
     openPokedataDialog();
+}
+
+function buildPokedataHTML(pokemon) {
+    const POKEDATA_IMAGE = getPokedataImage(pokemon);
+    const POKEDATA_TYPES = renderPokedataTypes(pokemon.types);
+    const BACKGROUND_CLASS = `${pokemon.types[0].type.name}-bg`;
+    const POKEDATA_STATS = renderPokedataStats(pokemon, BACKGROUND_CLASS);
+    return templatePokedata(pokemon, POKEDATA_IMAGE, POKEDATA_TYPES, POKEDATA_STATS, BACKGROUND_CLASS);
+}
+
+function showSearchedPokemon(pokemon) {
+    const DIALOG = document.getElementById('pokedata-dialog');
+    document.getElementById('pokedata-dialog-content').innerHTML = buildPokedataHTML(pokemon);
+    DIALOG.classList.add('search-mode');
+    DIALOG.showModal();
 }
 
 function openPokedataDialog() {
@@ -106,7 +116,7 @@ function closePokedataDialog() {
 
 function finishClosingDialog() {
     const DIALOG = document.getElementById('pokedata-dialog');
-    DIALOG.classList.remove('dialog-closing');
+    DIALOG.classList.remove('dialog-closing', 'search-mode');
     DIALOG.close();
 }
 
@@ -241,11 +251,11 @@ async function selectSearchResult(ID) {
         return;
     }
     clearSearch();
-    while (POKEMON_DATA.length < ID && loadedPokemon < totalPokemon) {
-        await loadPokemon();
-    }
-    if (ID <= POKEMON_DATA.length) {
-        showPokemonDetails(ID);
+    showLoadingScreen();
+    const SEARCHED_POKEMON = await getSinglePokemon(ID);
+    hideLoadingScreen();
+    if (SEARCHED_POKEMON) {
+        showSearchedPokemon(SEARCHED_POKEMON);
     }
 }
 

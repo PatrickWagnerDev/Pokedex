@@ -12,6 +12,18 @@ async function getData(P) {
     }
 }
 
+async function getSinglePokemon(ID) {
+    try {
+        const RESPONSE = await fetch(`https://pokeapi.co/api/v2/pokemon/${ID}`);
+        if (!RESPONSE.ok) {
+            throw new Error(`Error Code: ${RESPONSE.status}`);
+        }
+        return await RESPONSE.json();
+    } catch (error) {
+        console.error(error.message);
+    }
+}
+
 async function getType(T) {
     try {
         const RESPONSE = await fetch(`https://pokeapi.co/api/v2/type/${T}`);
