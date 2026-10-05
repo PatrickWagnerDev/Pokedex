@@ -40,11 +40,11 @@ async function loadNextPokemon() {
     loadedPokemon = END_ID;
 }
 
-async function renderPokecard(p) {
+async function renderPokecard(pokemon) {
     const POKEMON_LIST = document.getElementById('pokemon-list');
-    const TYPE_ICONS = await renderTypeIcons(p.types);
-    const CARD_COLORS = getCardColors(p.types);
-    POKEMON_LIST.insertAdjacentHTML('beforeend', templatePokecard(p, TYPE_ICONS, CARD_COLORS));
+    const TYPE_ICONS = await renderTypeIcons(pokemon.types);
+    const CARD_COLORS = getCardColors(pokemon.types);
+    POKEMON_LIST.insertAdjacentHTML('beforeend', templatePokecard(pokemon, TYPE_ICONS, CARD_COLORS));
 }
 
 async function renderTypeIcons(types) {
@@ -160,11 +160,11 @@ function updateNavigationButtons() {
     }
 }
 
-function renderPokedataStats(p, bgClass) {
+function renderPokedataStats(pokemon, bgClass) {
     let leftPart = "";
     let rightPart = "";
-    for (let statIndex = 0; statIndex < p.stats.length; statIndex++) {
-        const STAT_VALUE = p.stats[statIndex].base_stat;
+    for (let statIndex = 0; statIndex < pokemon.stats.length; statIndex++) {
+        const STAT_VALUE = pokemon.stats[statIndex].base_stat;
         const STAT_PERCENT = STAT_VALUE / MAX_STAT_VALUE * 100;
         const STAT_HTML = templatePokedataOneStat(STAT_LABELS[statIndex], STAT_VALUE, STAT_PERCENT);
         if (statIndex < 3) {
@@ -176,11 +176,11 @@ function renderPokedataStats(p, bgClass) {
     return templatePokedataStats(leftPart, rightPart, bgClass);
 }
 
-function getPokedataImage(p) {
-    if (p.sprites.other.showdown.front_default) {
-        return p.sprites.other.showdown.front_default;
+function getPokedataImage(pokemon) {
+    if (pokemon.sprites.other.showdown.front_default) {
+        return pokemon.sprites.other.showdown.front_default;
     } else {
-        return p.sprites.front_default;
+        return pokemon.sprites.front_default;
     }
 }
 
@@ -265,6 +265,6 @@ function clearSearch() {
     renderSearchResults([]);
 }
 
-function capitalizeName(i) {
-    return i.charAt(0).toUpperCase() + i.slice(1);
+function capitalizeName(name) {
+    return name.charAt(0).toUpperCase() + name.slice(1);
 }

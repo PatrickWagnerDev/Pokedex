@@ -1,6 +1,6 @@
-async function getData(P) {
+async function getData(pokemonId) {
     try {
-        const RESPONSE = await fetch(`https://pokeapi.co/api/v2/pokemon/${P}`);
+        const RESPONSE = await fetch(`https://pokeapi.co/api/v2/pokemon/${pokemonId}`);
         if (!RESPONSE.ok) {
             throw new Error(`Error Code: ${RESPONSE.status}`);
         }
@@ -24,9 +24,9 @@ async function getSinglePokemon(ID) {
     }
 }
 
-async function getType(T) {
+async function getType(typeName) {
     try {
-        const RESPONSE = await fetch(`https://pokeapi.co/api/v2/type/${T}`);
+        const RESPONSE = await fetch(`https://pokeapi.co/api/v2/type/${typeName}`);
         if (!RESPONSE.ok) {
             throw new Error(`Error Code: ${RESPONSE.status}`);
         }
@@ -50,9 +50,9 @@ async function getPokemonCount() {
     }
 }
 
-async function getAllPokemonNames(A) {
+async function getAllPokemonNames(amount) {
     try {
-        const RESPONSE = await fetch(`https://pokeapi.co/api/v2/pokemon?limit=${A}`);
+        const RESPONSE = await fetch(`https://pokeapi.co/api/v2/pokemon?limit=${amount}`);
         if (!RESPONSE.ok) {
             throw new Error(`Error Code: ${RESPONSE.status}`);
         }

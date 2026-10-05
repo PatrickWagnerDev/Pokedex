@@ -1,17 +1,17 @@
-function templatePokecard(p, typeIcons, cardColors) {
+function templatePokecard(pokemon, typeIcons, cardColors) {
     return /*html*/`
-        <article aria-label="Show details of ${capitalizeName(p.name)}" role="button" tabindex="0" class="pokemon-card" style="${cardColors}" onclick="showPokemonDetails(${p.id})" onkeydown="whenCardKeydown(event, ${p.id})" data-id="card">
+        <article aria-label="Show details of ${capitalizeName(pokemon.name)}" role="button" tabindex="0" class="pokemon-card" style="${cardColors}" onclick="showPokemonDetails(${pokemon.id})" onkeydown="whenCardKeydown(event, ${pokemon.id})" data-id="card">
             <div class="pokemon-card-main">
                 <div class="pokemon-card-info">
-                    <p class="pokemon-id">#${p.id}</p>
-                    <p class="pokemon-name">${capitalizeName(p.name)}</p>
+                    <p class="pokemon-id">#${pokemon.id}</p>
+                    <p class="pokemon-name">${capitalizeName(pokemon.name)}</p>
                 </div>
                 <div class="pokemon-types">
                     ${typeIcons}
                 </div>
             </div>
             <div class="pokemon-sprite-wrapper">
-                <img class="pokemon-sprite" src="${p.sprites.front_default}" alt="${capitalizeName(p.name)} sprite" data-id="card-image">
+                <img class="pokemon-sprite" src="${pokemon.sprites.front_default}" alt="${capitalizeName(pokemon.name)} sprite" data-id="card-image">
             </div>
         </article>
     `;
@@ -23,26 +23,26 @@ function templateTypeIcon(icon, typeName) {
     `;
 }
 
-function templatePokedata(p, pokedataImage, pokedataTypes, pokedataStats, bgClass) {
+function templatePokedata(pokemon, pokedataImage, pokedataTypes, pokedataStats, bgClass) {
     return /*html*/`
         <div class="pokedata">
             <div class="pokedata-top">
                 <div class="pokedata-image-box ${bgClass}">
-                    <img class="pokedata-image" src="${pokedataImage}" alt="${capitalizeName(p.name)}" data-id="dialog-image">
+                    <img class="pokedata-image" src="${pokedataImage}" alt="${capitalizeName(pokemon.name)}" data-id="dialog-image">
                 </div>
                 <div class="pokedata-info">
-                    <p class="pokedata-title">#${p.id} ${capitalizeName(p.name)}</p>
+                    <p class="pokedata-title">#${pokemon.id} ${capitalizeName(pokemon.name)}</p>
                     <div class="pokedata-types">
                         ${pokedataTypes}
                     </div>
                     <div class="pokedata-measures">
                         <div class="pokedata-data">
                             <span>Height</span>
-                            <span>${p.height / 10} m</span>
+                            <span>${pokemon.height / 10} m</span>
                         </div>
                         <div class="pokedata-data">
                             <span>Weight</span>
-                            <span>${p.weight / 10} kg</span>
+                            <span>${pokemon.weight / 10} kg</span>
                         </div>
                     </div>
                 </div>
@@ -52,9 +52,9 @@ function templatePokedata(p, pokedataImage, pokedataTypes, pokedataStats, bgClas
     `;
 }
 
-function templatePokedataType(T) {
+function templatePokedataType(typeName) {
     return /*html*/`
-        <div class="pokedata-type ${T}">${T}</div>
+        <div class="pokedata-type ${typeName}">${typeName}</div>
     `;
 }
 
@@ -71,13 +71,13 @@ function templatePokedataStats(leftPart, rightPart, bgClass) {
     `;
 }
 
-function templatePokedataOneStat(L, V, P) {
+function templatePokedataOneStat(label, value, percent) {
     return /*html*/`
         <div class="stat-row">
-            <span class="stat-label">${L}</span>
+            <span class="stat-label">${label}</span>
             <div class="stat-bar">
-                <div class="stat-bar-fill" style="width: ${P}%"></div>
-                <span class="stat-value">${V}</span>
+                <div class="stat-bar-fill" style="width: ${percent}%"></div>
+                <span class="stat-value">${value}</span>
             </div>
         </div>
     `;
